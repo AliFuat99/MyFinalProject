@@ -1,6 +1,7 @@
 ﻿using Entities.Concrete;
 using System;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 using System.Text;
 
 namespace Business.Constants
@@ -17,5 +18,6 @@ namespace Business.Constants
         public static string ProductNameAlreadyExists = "Ürün İsmi Sisteme Kayıtlı";
         public static string CategoriesListed = "Kategoriler Listelendi";
         public static string CategoryLimitExceded = "Kategori Limiti Aşıldığı İçin Yeni Ürün Eklenemiyor";
+        public static string AuthorizationDenied = "Yetkiniz Yok";
     }
 }

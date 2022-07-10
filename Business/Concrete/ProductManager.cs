@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Business.BusinessAspects.Autofac;
 using Business.CCS;
 using Business.Constants;
 using Business.ValidationRules.FluentValidation;
@@ -31,7 +32,8 @@ namespace Business.Concrete
         }
 
         
-        
+        //claim
+        [SecuredOperation("product.add,admin")]
         [ValidationAspect(typeof(ProductValidator))]
         public IResult Add(Product product)
         {
@@ -116,18 +118,6 @@ namespace Business.Concrete
             }
             return new SuccessResult();
             
-        }
-
-        private IResult CheckIfCategoryCount(string productName)
-        {
-            var result = _productDal.GetAll(p => p.ProductName == productName).Any();
-
-            if (result)
-            {
-                return new ErrorResult(Messages.ProductNameAlreadyExists);
-            }
-            return new SuccessResult();
-
         }
 
         private IResult CheckIfCategoryLimitExceded()
